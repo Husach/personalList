@@ -2,13 +2,15 @@ import { useState, useCallback } from "react";
 import PropTypes from 'prop-types';
 import {useCopyToClipboard} from "react-use";
 import { Button, Tooltip } from '@material-ui/core';
-import FileCopyIcon from '@material-ui/icons/FileCopy';
+import { FileCopyOutlined } from '@material-ui/icons';
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 
 
 const useStyles = makeStyles((theme) =>
     createStyles({
-        root: {},
+        root: {
+            cursor: "pointer"
+        },
         icon: {
             marginRight: theme.spacing(1)
         },
@@ -51,7 +53,7 @@ export const CopyToClipboardText = ({ text }) => {
     return (
         <Tooltip title={getTooltipTitle()} placement="top" arrow>
             <Button className={classes.root} onClick={onClickCopy} onMouseLeave={onMouseLeaveCopy}>
-                <FileCopyIcon className={classes.icon} />
+                <FileCopyOutlined fontSize="small" className={classes.icon} />
                 {text}
             </Button>
         </Tooltip>

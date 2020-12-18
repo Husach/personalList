@@ -13,7 +13,7 @@ import {
     Typography
 } from '@material-ui/core';
 import { CopyToClipboardText } from "../../../components/CopyToClipboardText";
-
+import { NATIONALITIES_HUMAN_NAME } from "../../../constants/nationality";
 
 const useStyles = makeStyles({
     table: {}
@@ -33,6 +33,7 @@ export const ContactsTable = ({ data }) => {
                         <TableCell>Email</TableCell>
                         <TableCell>Phone</TableCell>
                         <TableCell>Location</TableCell>
+                        <TableCell>Nationality</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -51,8 +52,14 @@ export const ContactsTable = ({ data }) => {
                             <TableCell>
                                 <CopyToClipboardText text={contact.phone}/>
                             </TableCell>
-                            <TableCell>4</TableCell>
-                            <TableCell>5</TableCell>
+                            <TableCell>
+                                <CopyToClipboardText text={contact.email}/>
+                            </TableCell>
+                            <TableCell>
+                                <Typography>{contact.location.country}</Typography>
+                                <Typography>{contact.location.city}, {contact.location.street.name} {contact.location.street.number} </Typography>
+                            </TableCell>
+                            <TableCell>{NATIONALITIES_HUMAN_NAME[contact.nat]}</TableCell>
                         </TableRow>
                     )) }
                 </TableBody>
