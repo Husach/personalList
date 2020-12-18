@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useState, useCallback } from "react";
 import PropTypes from 'prop-types';
 import {useCopyToClipboard} from "react-use";
 import { Button, Tooltip } from '@material-ui/core';
@@ -18,16 +18,24 @@ const useStyles = makeStyles((theme) =>
     })
 );
 
+const STATUS_COPY = {
+    COPY: "copy",
+    COPIED: "copied"
+};
+
 export const CopyToClipboardText = ({ text }) => {
     const classes = useStyles();
-    const [state, copyToClipboard] = useCopyToClipboard();
-    const [statusCopy, setStatusCopy] = useState("copy");
+    const [, copyToClipboard] = useCopyToClipboard();
+    const [statusCopy, setStatusCopy] = useState(STATUS_COPY.COPY);
 
     const getTooltipTitle = () => {
         switch (statusCopy) {
-        case "copy": return "Copy";
-        case "copied": return "Copied";
-        default: return ""
+        case STATUS_COPY.COPY:
+            return "Copy";
+        case STATUS_COPY.COPIED:
+            return "Copied";
+        default:
+            return ""
         }
     };
 
