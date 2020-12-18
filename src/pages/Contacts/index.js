@@ -1,11 +1,6 @@
 import { makeStyles, createStyles } from '@material-ui/core/styles';
+import { Container, Grid, Typography } from '@material-ui/core';
 import { useContacts } from "./useContacts";
-
-// material-ui
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import Typography from "@material-ui/core/Typography";
-
 import { ContactsTable } from "./ContactsTable/index";
 
 
@@ -20,9 +15,6 @@ const useStyles = makeStyles((theme) =>
 export const Contacts = () => {
     const classes = useStyles();
     const contacts = useContacts();
-    
-    console.warn('Contacts');
-    console.log("contacts:", contacts);
     
     return <Container className={classes.root}>
         <Grid container>
